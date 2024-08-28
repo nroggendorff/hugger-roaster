@@ -39,7 +39,7 @@ export async function roast({ username, language }: FormProps) {
   const collectionsUpvotes = collections?.reduce((acc: number, item: any) => acc + item.upvotes, 0);
   
   const datas = formatInformations(user, following.length, followers.length, spaces, models, collections,  spacesLikes, modelsLikes, collectionsUpvotes);
-  const chat = transformForInference(datas, language, username);
+  const chat = transformForInference(datas, language, user.fullname ?? username);
 
   const hf = new HfInference(process.env.HF_ACCESS_TOKEN);
   const tokenizer = await AutoTokenizer.from_pretrained("philschmid/meta-llama-3-tokenizer")
