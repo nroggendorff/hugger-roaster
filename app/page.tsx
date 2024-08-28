@@ -65,9 +65,9 @@ export default function Home() {
           <p className="uppercase text-base tracking-wider font-semibold mb-2">
             Roasting
           </p>
-          <p className="text-lg text-gray-500 leading-relaxed container mx-auto text-pretty">
+          <div className="text-lg text-gray-500 leading-relaxed container mx-auto text-pretty whitespace-break-spaces">
             {data}
-          </p>
+          </div>
           <button
             className={classNames(
               "bg-black rounded-full mt-4 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed",
