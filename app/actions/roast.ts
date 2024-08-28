@@ -58,6 +58,6 @@ export async function roast({ username, language }: FormProps) {
   })
 
   return {
-    data: res.generated_text.match(/"(.*?)"/)?.[1],
+    data: res.generated_text
   }
 }
