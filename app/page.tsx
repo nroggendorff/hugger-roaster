@@ -22,6 +22,7 @@ export default function Home() {
       error?: string;
       data?: any;
     } = await roast(form);
+
     if (res.error) {
       setError(res.error);
     } else {
