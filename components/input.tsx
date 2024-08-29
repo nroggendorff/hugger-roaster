@@ -41,7 +41,7 @@ export const Input: React.FC<Props> = ({ onChange, value }) => {
       )}
     >
       <div className="bg-zinc-100 border-r border-zinc-200 text-zinc-500 text-sm px-3 h-[40px] flex items-center justify-center">
-        https://huggingface.co/
+        <span className="max-lg:hidden">https://</span>huggingface.co/
       </div>
       <input
         value={username}

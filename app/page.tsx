@@ -33,9 +33,9 @@ export default function Home() {
   };
 
   return (
-    <section className="h-screen w-full flex items-center justify-center flex-col bg-zinc-100 gap-5">
+    <section className="min-h-screen h-full w-full flex items-center justify-center flex-col bg-zinc-100 gap-5 overflow-auto p-6">
       <div className="max-w-2xl w-full border border-gray-200 bg-white rounded-3xl p-8 grid gap-8 shadow-xl shadow-black/5">
-        <header className="flex items-center justify-between border-b border-zinc-200 pb-5">
+        <header className="flex items-start max-lg:gap-1 lg:items-center justify-between max-lg:flex-col border-b border-zinc-200 pb-5">
           <Image
             src={Logo}
             alt="logo hugging face"

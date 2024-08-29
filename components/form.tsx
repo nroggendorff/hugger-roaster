@@ -46,7 +46,7 @@ export const Form: React.FC<Props> = ({ loading, onSubmit }) => {
       <div className="flex justify-end">
         <button
           className={classNames(
-            "bg-black rounded-full px-5 py-2.5 text-base font-medium text-white hover:bg-zinc-800 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed",
+            "bg-black max-lg:w-full rounded-full px-5 py-2.5 text-base font-medium text-white hover:bg-zinc-800 disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed",
             {
               "animate-pulse": loading,
             }
