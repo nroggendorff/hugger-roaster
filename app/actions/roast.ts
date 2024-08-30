@@ -5,6 +5,7 @@ import { HfInference } from '@huggingface/inference'
 
 import { formatInformations, transformForInference } from "@/utils/roast";
 import { FormProps } from "@/components/form";
+import prisma from "@/utils/prisma";
 
 const MODEL_ID = "meta-llama/Meta-Llama-3.1-70B-Instruct";
 
@@ -59,5 +60,24 @@ export async function roast({ username, language }: FormProps) {
 
   return {
     data: res.generated_text
+  }
+}
+
+export async function getRoast({ id } : { id: string }) {
+  const roast = await prisma.quote.findUnique({
+    where: {
+      id
+    }
+  })
+
+  if (!roast) {
+    return {
+      error: "Roast not found",
+      status: 404
+    }
+  }
+
+  return {
+    data: roast
   }
 }
