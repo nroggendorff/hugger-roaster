@@ -85,6 +85,7 @@ export async function GET(
               whiteSpace: "break-spaces",
               lineClamp: 2,
               marginTop: 10,
+              textWrap: "pretty",
             }}
           >
             {roast.data.text}...
