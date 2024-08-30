@@ -5,10 +5,36 @@ import { getRoast } from "@/app/actions/roast";
 import { Quote } from "@/components/quote";
 import Logo from "@/assets/logo.svg";
 import Link from "next/link";
+import { Metadata, ResolvingMetadata } from "next";
 
 async function get(id: string) {
   const roast = await getRoast({ id });
   return roast;
+}
+
+export async function generateMetadata(
+  { params }: { params: { roastId: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return {
+    title: "Hugger Roaster",
+    description: "A Hugger has been roasted! 🔥 Check it out",
+    metadataBase: new URL("https://enzostvs-hugger-roaster.hf.space"),
+    openGraph: {
+      title: "Hugger Roaster",
+      description: "A Hugger has been roasted! 🔥 Check it out",
+      type: "website",
+      images:
+        "https://enzostvs-hugger-roaster.hf.space/api/og/" + params.roastId,
+    },
+    twitter: {
+      title: "Hugger Roaster",
+      description: "A Hugger has been roasted! 🔥 Check it out",
+      card: "summary_large_image",
+      images:
+        "https://enzostvs-hugger-roaster.hf.space/api/og/" + params.roastId,
+    },
+  };
 }
 
 export default async function Roast({
