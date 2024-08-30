@@ -47,7 +47,7 @@ export async function GET(
             // border: "1px solid #d4d4d8",
             background: "white",
             borderRadius: 40,
-            padding: "50px 40px",
+            padding: "60px 50px",
             boxShadow:
               "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
           }}
@@ -84,6 +84,7 @@ export async function GET(
               color: "#3f3f46",
               whiteSpace: "break-spaces",
               lineClamp: 2,
+              marginTop: 10,
             }}
           >
             {roast.data.text}...
