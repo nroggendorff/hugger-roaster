@@ -23,7 +23,7 @@ export default async function Roast({
   }
   return (
     <div>
-      <header className="flex items-start max-lg:gap-1 lg:items-center justify-between max-lg:flex-col border-b border-zinc-200 pb-5">
+      <header className="flex items-start max-lg:gap-1 lg:items-center justify-between max-lg:flex-col mb-5">
         <Image
           src={Logo}
           alt="logo hugging face"

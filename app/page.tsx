@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
+import satori from "satori";
 
 import { roast } from "@/app/actions/roast";
 import { share, ShareProps } from "@/app/actions/share";
