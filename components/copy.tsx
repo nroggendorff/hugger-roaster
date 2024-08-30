@@ -8,7 +8,7 @@ export const CopyToClipboard = ({ id }: { id: string }) => {
   const [copied, setCopied] = useState(false);
 
   const url = useMemo(() => {
-    return `https://huggingface.co/spaces/enzostvs/hugger-roaster/${id}`;
+    return `https://enzostvs-hugger-roaster.hf.space/${id}`;
   }, [id]);
 
   const handleCopy = () => {
