@@ -16,7 +16,7 @@ export const formatInformations = (
       name: org.fullname,
     })),
     followers: user.numFollowers,
-    following: user.numFollowers,
+    following: user.numFollowing,
     total_spaces_likes: spacesLikes,
     total_models_likes: modelsLikes,
     total_collections_likes: collectionsUpvotes,
