@@ -4,7 +4,7 @@ emoji: 🧨
 colorFrom: red
 colorTo: gray
 sdk: docker
-pinned: true
+pinned: false
 app_port: 3000
 short_description: Roast any Hugging Face profile
 license: mit
