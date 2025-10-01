@@ -3,9 +3,10 @@ title: Hugger Roaster
 emoji: 🧨
 colorFrom: red
 colorTo: gray
-sdk: docker
+sdk: gradio
+sdk_version: 5.47.2
+app_file: app.py
 pinned: false
-app_port: 3000
 short_description: Roast any Hugging Face profile
 license: mit
 ---
