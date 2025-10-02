@@ -3,12 +3,10 @@ title: Hugger Roaster
 emoji: 🧨
 colorFrom: red
 colorTo: gray
-sdk: gradio
-sdk_version: 5.47.2
-app_file: app.py
+sdk: static
 pinned: false
-short_description: Roast any Hugging Face profile
 license: mit
+short_description: Roast any Hugging Face profile
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hugger Roaster</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <img src="logo.svg" alt="logo">
+          <p class="subtitle">Roast your favorite Hugging Face user! 👹</p>
+        </div>
+
+        <div id="error-box" class="error-box"></div>
+
+        <div class="form-group">
+          <label class="label">Hugging Face Username</label>
+          <div class="input-wrapper">
+            <span class="input-prefix">https://huggingface.co/</span>
+            <input type="text" id="username-input" placeholder="enzostvs" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Language</label>
+          <select id="language-select">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+          </select>
+        </div>
+
+        <div class="button-container">
+          <button id="roast-btn">Roast this Hugger 🔥</button>
+        </div>
+      </div>
+
+      <div id="roast-container" class="card roast-container">
+        <p class="roast-header">ROASTING</p>
+        <p id="roast-text" class="roast-text"></p>
+        <button id="share-btn" class="share-btn">Share my roast!</button>
+        <div id="share-output" class="share-output"></div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
