@@ -1,14 +1,20 @@
 import gradio as gr
 import requests
-import os
-from huggingface_hub import InferenceClient
 import json
-from datetime import datetime
 import sqlite3
 from pathlib import Path
 import spaces
+import torch
+from transformers import pipeline
 
 DB_PATH = Path("roasts.db")
+
+pipe = pipeline(
+    "text-generation",
+    model="meta-llama/Llama-3.1-8B-Instruct",
+    device_map="auto",
+    torch_dtype=torch.bfloat16,
+)
 
 
 def init_db():
@@ -107,15 +113,9 @@ def transform_for_inference(datas, language, username):
 
 
 @spaces.GPU
-def roast_user(username, language, request: gr.Request):
+def roast_user(username, language):
     if not username:
         return "Please provide a username", None, gr.update(visible=True)
-
-    user_token = None
-    if request:
-        user_token = request.headers.get("authorization")
-        if user_token and user_token.startswith("Bearer "):
-            user_token = user_token.replace("Bearer ", "")
 
     exists, user = check_user(username)
     if not exists:
@@ -161,16 +161,14 @@ def roast_user(username, language, request: gr.Request):
         )
         messages = transform_for_inference(datas, language, username)
 
-        client = InferenceClient(token=user_token)
-
-        response = client.chat_completion(
-            messages=messages,
-            model="meta-llama/Meta-Llama-3.1-70B-Instruct",
-            max_tokens=1024,
+        response = pipe(
+            messages,
+            max_new_tokens=1024,
             temperature=0.7,
+            do_sample=True,
         )
 
-        roast_text = response.choices[0].message.content
+        roast_text = response[0]["generated_text"][-1]["content"]
 
         return roast_text, username, gr.update(visible=False)
 
