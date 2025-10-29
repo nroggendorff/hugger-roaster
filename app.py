@@ -8,9 +8,6 @@ import sqlite3
 from pathlib import Path
 import spaces
 
-HF_TOKEN = os.environ.get("HF_TOKEN")
-client = InferenceClient(token=HF_TOKEN)
-
 DB_PATH = Path("roasts.db")
 
 
@@ -110,9 +107,15 @@ def transform_for_inference(datas, language, username):
 
 
 @spaces.GPU
-def roast_user(username, language):
+def roast_user(username, language, request: gr.Request):
     if not username:
         return "Please provide a username", None, gr.update(visible=True)
+
+    user_token = None
+    if request:
+        user_token = request.headers.get("authorization")
+        if user_token and user_token.startswith("Bearer "):
+            user_token = user_token.replace("Bearer ", "")
 
     exists, user = check_user(username)
     if not exists:
@@ -157,6 +160,8 @@ def roast_user(username, language):
             collections_upvotes,
         )
         messages = transform_for_inference(datas, language, username)
+
+        client = InferenceClient(token=user_token)
 
         response = client.chat_completion(
             messages=messages,
